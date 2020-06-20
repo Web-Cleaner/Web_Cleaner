@@ -48,9 +48,10 @@ $(document).ready(function() {
 	stats.listen(['edged'], startPeriod.getTime(), endPeriod.getTime(), function() {
 		updateStuff();
 	});
-	stats.listen(['feeled'], startPeriod.getTime(), endPeriod.getTime(), function(feels) {
-		updateFeels(feels);
-	});
+	stats.listen(['feeled'], startPeriod.getTime(), endPeriod.getTime(), function() {
+        feels = stats.getEvents('feeled', startPeriod.getTime(), endPeriod.getTime());
+        updateFeels(feels);
+    });
 	stats.listen(['installed'], function(events) {
 		lastOrgasm = null;
 		installDate = events.pop().time;
@@ -178,6 +179,7 @@ function updateFeels(feels) {
 	$('[data-feel]').each(function() {
 		$(this).text((summary[$(this).data('feel')] || 0).toLocaleString());
 	});
+	sortFeels();
 }
 
 var updateTimer;

@@ -55,7 +55,7 @@
 }
 #mainContainer {
     width: 850px;
-    height: 815px
+    height: 785px
 }
 .cal-heatmap-container {
     margin-bottom: -10px;
@@ -85,28 +85,26 @@
 	color: #FAFAFA
 }
 .reportChartHolder {
-    width: 35%;
-    height: 64%;
+    width: 287px;
     position: relative;
-    border-right: 1px solid #DBDBDB;
     top: 15px;
     display: inline-block
 }
 .reportHolder {
-    height: 68.6%;
-    width: 64%;
+    width: 544px;
     float: right;
     margin: -10px 0 0 0
 }
-.reportHolder ul, .reportChartHolder ul { list-style: none; }
-.reportHolder ul { margin: 0 -10px 0 0; }
-.reportChartHolder ul { margin: -25px 0 0 0 }
-.reportHolder li,
-.reportChartHolder li {
+.reportHolder ul { list-style: none; }
+.reportHolder ul {
+	margin: 0 -10px 0 0;
+	padding: 0
+}
+.reportHolder li {
     border-bottom: 1px solid #B7B7B7;
     height: 45px;
     width: 92.5%;
-    position: relative
+	margin-bottom: 12px;
 }
 .reportHolder select {
 	-webkit-padding-end: 5px;
@@ -133,17 +131,26 @@
     font-weight: 300;
     font-size: 19px
 }
+.reportHolder .reportFeelings-min h3 {
+	margin-bottom: 5px;
+	padding: 2px;
+	position: relative;
+	top: 4px;
+	right: 10px;
+	font-size: 11px;
+	border-radius: 2px;
+	background-color: #FF0000
+}
 .reportCommon h3 {
-    margin: 237px 0 0 15px;
+    margin: 253px 0 0 15px;
     font-size: 16px;
     color: #FAFAFA
 }
-.reportCommon_Left {
-	margin: 10px 10px 0 0;
+.reportCommon_Left, .reportCommon_Right {
+	margin: 15px 0 0 0;
 	padding: 2px 5px 5px 5px;
     width: 120px;
-	height: 38px;
-	overflow: hidden;
+	height: 28px;
     float: left;
 	color: #FAFAFA;
 	background-color: #4D4D4D;
@@ -151,17 +158,7 @@
 	-webkit-box-shadow: 0.5px 0.5px #ABC1D9
 }
 .reportCommon_Right {
-	margin: 10px 0 0 0;
-	padding: 2px 5px 5px 5px;
-	width: 120px;
-	height: 38px;
-    display: inline-block;
-	overflow: hidden;
-    float: left;
-	color: #FAFAFA;
-	background-color: #4D4D4D;
-	border: 0.5px solid #2E2E2E;
-	-webkit-box-shadow: 0.5px 0.5px #ABC1D9
+    display: inline-block
 }
 .reportCommon span.hlBlue {
     font-weight: bold;
@@ -170,6 +167,10 @@
 .reportCommon span.hlRed {
     font-weight: bold;
     color: #FF535D
+}
+.reportButtons_Left, .reportButtons_Right {
+	width: 260px;
+	display: table-cell
 }
 .arrowLeft::before,
 .arrowRight::before {
@@ -197,10 +198,13 @@
     float: right
 }
 h3.bold { font-weight: bold }
+#report-box {
+	height: 284px
+}
 .statsLeft,
 .statsRight {
     display: inline-block;
-    width: 90px
+    width: 143px
 }
 .statsLeft li,
 .statsRight li {
@@ -244,23 +248,41 @@ h3.bold { font-weight: bold }
 #feels-box {
 	margin-bottom: 94px
 }
+#feels-q {
+	margin-top: 12px
+}
+.reportFeelings-min {
+	width: 251px;
+    display: inline-block;
+    -webkit-user-select: none
+}
+.reportFeelings-min li {
+    width: 62.5px;
+    height: 60px;
+    border: none;
+    display: inline-block;
+    margin-bottom: 0px;
+    text-align: center;
+    color: #FAFAFA
+}
 .reportFeelings {
     width: 550px;
     display: inline-block;
     -webkit-user-select: none
 }
 .reportFeelings li {
-    width: 117.5px;
+    width: 83.5px;
     height: 40px;
     border: none;
     display: inline-block;
-    margin-top: 10px;
     text-align: center;
     color: #FAFAFA
 }
-.reportFeelings .smileyContainer {
-    cursor: pointer;
-    position: relative
+.reportFeelings li:nth-child(n+5) {
+    margin-top: 5px
+}
+.reportFeelings-min .smileyContainer-min, .reportFeelings .smileyContainer {
+    cursor: pointer
 }
 div.happy,
 div.unhappy,
@@ -278,30 +300,34 @@ div.hero {
     height: 16px;
     zoom: 2
 }
-.reportFeelings div.happy,
-.reportFeelings div.unhappy,
-.reportFeelings div.shocked,
-.reportFeelings div.angry,
-.reportFeelings div.upset,
-.reportFeelings div.unsure,
-.reportFeelings div.stressed,
-.reportFeelings div.frustrated,
-.reportFeelings div.turnedOn,
-.reportFeelings div.addicted,
-.reportFeelings div.bored,
-.reportFeelings div.hero {
+[class^="reportFeelings"] div.happy,
+[class^="reportFeelings"] div.unhappy,
+[class^="reportFeelings"] div.shocked,
+[class^="reportFeelings"] div.angry,
+[class^="reportFeelings"] div.upset,
+[class^="reportFeelings"] div.unsure,
+[class^="reportFeelings"] div.stressed,
+[class^="reportFeelings"] div.frustrated,
+[class^="reportFeelings"] div.turnedOn,
+[class^="reportFeelings"] div.addicted,
+[class^="reportFeelings"] div.bored,
+[class^="reportFeelings"] div.hero {
     width: 16px;
     height: 16px;
     display: inline-block;
     zoom: 2.5
 }
+[class^="reportFeelings-min"] div {
+    zoom: 2.0 !important;
+}
+.smileyContainer-min { width: 58px }
 .smileyContainer {
-    width: 115px;
+    width: 80px;
     padding: 5px 0px 5px 0px;
     border-radius: 5px;
     background: #CCCCCC url(../img/gray_transparent_background.png) repeat scroll 0 0
 }
-.smileyContainer:hover { opacity: 0.65; }
+[class^="smileyContainer"]:hover { opacity: 0.65 }
 div.happy { background: url(../img/smilies.svg) 0px 0px }
 div.unhappy { background: url(../img/smilies.svg) -51px 0px }
 div.shocked { background: url(../img/smilies.svg) -68px 0px }
@@ -316,7 +342,7 @@ div.bored { background: url(../img/smilies.svg) 0px -34px }
 div.hero { background: url(../img/smilies.svg) -136px -17px }
 .c3 {
     width: 90%;
-    height: 209px;
+    height: 146px;
     margin-top: 10px
 }
 .c3_col1,
@@ -366,7 +392,7 @@ div.hero { background: url(../img/smilies.svg) -136px -17px }
     color: rgba(255, 255, 255, 0.95)
 }
 .c_percent {
-    margin-top: -5px;
+    margin-top: -15px;
     margin-left: -5px;
     width: 100%;
     font-size: 26px;
@@ -377,6 +403,9 @@ div.hero { background: url(../img/smilies.svg) -136px -17px }
 #buttons {
 	margin-top: 5px;
 	margin-left: 95px
+}
+#buttons1 {
+	margin: 15px 0 0 5px
 }
 .button,
 .button-disabled {
@@ -400,6 +429,29 @@ div.hero { background: url(../img/smilies.svg) -136px -17px }
 	box-shadow: 0.5px 0.5px #82A18C,
 				0.5px 0.5px #00FF52,
 				1px 1px #82A18C
+}
+#buttons1 .button1 {
+    display: table-cell
+}
+.button1 {
+	height: 19px;
+	width: 94px;
+	line-height: 19px;
+	padding: 10px;
+	margin-right: 5px;
+	border-collapse: separate;
+	-webkit-user-select: none;
+	text-align: center;
+	font-size: 13px;
+	text-decoration: none;
+	cursor: pointer;
+	color: #B7B7B7;
+	border: 2px solid #B7B7B7;
+}
+.button1-hl::first-letter {
+	color: #FAFAFA;
+	font-size: 15px;
+	font-weight: bold
 }
 .button-disabled {
 	cursor: not-allowed;
@@ -587,7 +639,7 @@ body {
     width: 57px;
     height: 57px;
     left: 126px;
-    top: 78px;
+    top: 48px;
     background: no-repeat url(../img/lock-open.svg);
     cursor: pointer
 }
@@ -617,7 +669,7 @@ g path:hover { opacity: .35 }
 	margin-top: 5px;
 	display: block
 }
-.liquidBubble { margin: -70px 0 0 -40px }
+.liquidBubble { margin: 12px 0 0 90px }
 .liquidBubble .green .outer,
 .liquidBubble .red .outer,
 .liquidBubble .blue .outer {

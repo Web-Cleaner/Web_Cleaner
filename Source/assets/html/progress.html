@@ -12,7 +12,7 @@
 		<script type="text/javascript" src="../js/stats.js"></script>
 		<script type="text/javascript" src="../js/questions.js"></script>
 		<script type="text/javascript" src="../js/progress.js"></script>
-		<script type="text/javascript" src="../js/intro.js"></script>
+		<!--<script type="text/javascript" src="../js/intro.js"></script>-->
 		<link rel="stylesheet" type="text/css" href="../css/cal-heatmap.css" />
 		<link rel="stylesheet" type="text/css" href="../css/introjs.css" />
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
@@ -66,26 +66,18 @@
 			</div>
 			<div id="cal-heatmap" data-hint="This is a color coded calendar for tracking your orgasms over a 6 month period.<span id=calendar-today>01</span>The current day is highlighted to help you easily track the number of orgasms you had.<span id=calendar-hl>01</span> Your next milestone or orgasm date is also highlighted to help you hold out for longer." data-position="left"></div>
 			<script type="text/javascript" src="../js/heatmap.js"></script>
-            <div class="reportChartHolder">    
-				<ul>
-					<li><span class="glyphicon glyphicon-signal" aria-hidden="true" data-hint="Orgasming <i>is</i> needing CPR: Cumming, Prostate Milking, or Ruining. This graph displays a simple visual breakdown of all the orgasms you had this month." data-position="right"></span> <h3>Orgasm Statistics</h3></li>
-                </ul>         
+            <div class="reportChartHolder">         
 				<div id="doughnutChart" class="chart"></div>
 				<div id="lock" data-role="lock" data-hint="If you are in a chastity session and are locked up by an accountability partner, it will display so here. This feature is still in development." data-position="right"></div>
 				<div class="reportCommon">
 					<h3>
-						<span class="reportCommon_Left">Last Orgasm<br /><span class="hlBlue" id="field-last-orgasm"></span></span>
-						<span class="reportCommon_Right">Edges Since<br /><span class="hlBlue" id="field-edges-since-last-orgasm"></span></span>
-						<span class="reportCommon_Left">Next Milestone<br /><span class="hlBlue" id="field-next-milestone"></span></span>
-						<span class="reportCommon_Right">Longest Streak<br /><span class="hlBlue" id="field-longest-streak"></span></span>
-						<span class="reportCommon_Left">Freq. Relapse Day<br /><span class="hlRed" id="field-frequent-relapse"></span></span>
-						<span class="reportCommon_Right">Mood<br /><span class="hlBlue" id="field-mood"></span></span>
+						<div class="reportCommon_Left"><div style="position:relative;top:-13px;"><span style="padding:2px;background: linear-gradient(to bottom, rgba(164,179,87,0) 0%, rgba(77,77,77,1) 50%);">Last Orgasm</span><br /><span class="hlBlue" id="field-last-orgasm"></span></div></div>
+						<div class="reportCommon_Right"><div style="position:relative;top:-13px;"><span style="padding:2px;background: linear-gradient(to bottom, rgba(164,179,87,0) 0%, rgba(77,77,77,1) 50%);">Edges Since</span><br /><span class="hlBlue" id="field-edges-since-last-orgasm"></span></div></div>
+						<div class="reportCommon_Left"><div style="position:relative;top:-13px;"><span style="padding:2px;background: linear-gradient(to bottom, rgba(164,179,87,0) 0%, rgba(77,77,77,1) 50%);">Longest Streak</span><br /><span class="hlBlue" id="field-longest-streak"></span></div></div>
+						<div class="reportCommon_Right"><div style="position:relative;top:-13px;"><span style="padding:2px;background: linear-gradient(to bottom, rgba(164,179,87,0) 0%, rgba(77,77,77,1) 50%);">Freq. Relapse Day</span><br /><span class="hlRed" id="field-frequent-relapse"></span></div></div>
+						<div class="reportCommon_Left" style="display: none">Next Milestone<br /><span class="hlBlue" id="field-next-milestone"></span></div>
+						<div class="reportCommon_Right" style="display: none">Mood<br /><span class="hlBlue" id="field-mood"></span></div>
 					</h3>
-				</div>
-				<div id="buttons">
-					<div class="button" data-role="report-cpr" data-hint="If you orgasm with or without permission, you must report it." data-position="top">Report CPR</div>
-					<div class="button" data-role="report-edge">I Edged</div>
-					<div class="button-disabled" data-role="play">Play Time (??:??)</div>
 				</div>
 				<div class="liquidBubble">
 					<div class="blue">
@@ -99,36 +91,76 @@
 				</div>
             </div>
             <div class="reportHolder">
-                <ul>		
-					<li>
-						<h3>
-							<select>
-								<option>N/A</option>
-							</select>
-						</h3>
-						<span style="float: right; margin-left: -203px"><h3><a class="switch" data-box="feels" data-hint="This extension keeps track of your overall mood every month to help you you better understand the effects of porn, orgasming or lack thereof. This data is stored locally and will not leave your browser. This feature is non-functional at this time." data-position="right">Mood & Rating</a> / <a class="switchHl" data-box="tickets" data-hint="Tickets are given to you at every milestone and can be taken away if you relapse or orgasm without permission." data-position="left">Tickets</a></h3></span>
-					</li>
-                </ul>
+				<div id="report-box" style="display: none">
+					<div class="reportButtons_Left">
+						<ul>
+							<li><span class="glyphicon glyphicon-signal" aria-hidden="true" data-hint="Orgasming <i>is</i> needing CPR: Cumming, Prostate Milking, or Ruining. This graph displays a simple visual breakdown of all the orgasms you had this month." data-position="right"></span> <h3>Today I...</h3></li>
+						</ul>
+						<div id="buttons1" data-form='cpr'>
+							<div class="button1 button1-hl" style="float:left" data-role="answer" data-answer="cummed">Cummed</div>
+							<div class="button1 button1-hl" data-role="answer" data-answer="milked">Prostate Milked</div>
+							<br />
+							<div class="button1 button1-hl" style="float:left" data-role="answer" data-answer="ruined">Ruined</div>
+							<div class="button1" data-role="report-edge">Edged</div>
+						</div>
+					</div>
+					<div class="reportButtons_Right">
+						<ul>
+							<li><span class="glyphicon glyphicon-signal" aria-hidden="true" data-hint="Report and keep track of your overall mood each month. Click a smiley to report how you feel." data-position="right"></span> <h3>I Feel...</h3></li>
+						</ul>
+						<ul id="reportFeelings-min" class="reportFeelings-min">
+							<li data-feelrep="happy"><span><div class="happy" title="Happy">&nbsp;</div></span> <h3 class='feel-count' data-feel="happy"></h3>&nbsp;Happy</li>
+							<li data-feelrep="upset"><span><div class="upset" title="Upset">&nbsp;</div></span> <h3 class='feel-count' data-feel="upset"></h3>&nbsp;Upset</li>
+							<li data-feelrep="turnedOn"><span><div class="turnedOn" title="Turned On">&nbsp;</div></span> <h3 class='feel-count' data-feel="turnedOn"></h3>&nbsp;Turned On</li>
+							<li data-feelrep="unhappy"><span><div class="unhappy" title="Unhappy">&nbsp;</div></span> <h3 class='feel-count' data-feel="unhappy"></h3>&nbsp;Unhappy</li>
+							<li data-feelrep="unsure"><span><div class="unsure" title="Unsure">&nbsp;</div></span> <h3 class='feel-count' data-feel="unsure"></h3>&nbsp;Unsure</li>
+							<li data-feelrep="addicted"><span><div class="addicted" title="Addicted">&nbsp;</div></span> <h3 class='feel-count' data-feel="addicted"></h3>&nbsp;Addicted</li>
+							<li data-feelrep="shocked"><span><div class="shocked" title="Shocked">&nbsp;</div></span> <h3 class='feel-count' data-feel="shocked"></h3>&nbsp;Shocked</li>
+							<li data-feelrep="stressed"><span><div class="stressed" title="Stressed">&nbsp;</div></span> <h3 class='feel-count' data-feel="stressed"></h3>&nbsp;Stressed</li>
+							<li data-feelrep="bored"><span><div class="bored" title="Bored">&nbsp;</div></span> <h3 class='feel-count' data-feel="bored"></h3>&nbsp;Bored</li>
+							<li data-feelrep="angry"><span><div class="angry" title="Angry">&nbsp;</div></span> <h3 class='feel-count' data-feel="angry"></h3>&nbsp;Angry</li>
+							<li data-feelrep="frustrated"><span><div class="frustrated" title="Frustrated">&nbsp;</div></span> <h3 class='feel-count' data-feel="frustrated"></h3>&nbsp;Frustrated</li>
+							<li data-feelrep="hero"><span><div class="hero" title="I can do it!">&nbsp;</div></span> <h3 class='feel-count' data-feel="hero"></h3>&nbsp;Hero</li>
+						</ul>
+						<div id="moods" class="button1" data-box="feels" style="float: left">More Moods</div>
+						 <div id="tickets" class="button1" data-box="tickets" style="display: table-cell">View Tickets</div>
+					</div>
+				</div>
+				<div id="nav-bar">
+					<ul>		
+						<li>
+							<h3>
+								<select>
+									<option>N/A</option>
+								</select>
+							</h3>
+							<span style="float: right; margin-left: -203px"><h3>
+								<a class="switch" data-box="report" data-hint="This extension keeps track of your overall mood every month to help you you better understand the effects of porn, orgasming or lack thereof." data-position="right">Overview</a> /
+								<a class="switch" data-box="feels" data-hint="This extension keeps track of your overall mood every month to help you you better understand the effects of porn, orgasming or lack thereof." data-position="right">Moods</a> /
+								<a class="switch" data-box="tickets" data-hint="Tickets are given to you at every milestone and can be taken away if you relapse or orgasm without permission." data-position="left">Tickets</a></h3></span>
+						</li>
+					</ul>
+				</div>
                 <div id="feels-box">
 					<ul class="statsLeft">
-						<li><span><div class="happy" title="Happy">&nbsp;</div></span> <h3 data-feel="happy"></h3></li>
-						<li><span><div class="upset" title="Upset">&nbsp;</div></span> <h3 data-feel="upset"></h3></li>
-						<li><span><div class="turnedOn" title="Turned On">&nbsp;</div></span> <h3 data-feel="turnedOn"></h3></li>
+						<li data-feelrep="happy"><span><div class="happy" title="Happy">&nbsp;</div></span> <h3 class='feel-count' data-feel="happy"></h3></li>
+						<li data-feelrep="upset"><span><div class="upset" title="Upset">&nbsp;</div></span> <h3 class='feel-count' data-feel="upset"></h3></li>
+						<li data-feelrep="turnedOn"><span><div class="turnedOn" title="Turned On">&nbsp;</div></span> <h3 class='feel-count' data-feel="turnedOn"></h3></li>
 					</ul>
 					<ul class="statsRight">
-						<li><span><div class="unhappy" title="Unhappy">&nbsp;</div></span> <h3 data-feel="unhappy"></h3></li>
-						<li><span><div class="unsure" title="Unsure">&nbsp;</div></span> <h3 data-feel="unsure"></h3></li>
-						<li><span><div class="addicted" title="Addicted">&nbsp;</div></span> <h3 data-feel="addicted"></h3></li>
+						<li data-feelrep="unhappy"><span><div class="unhappy" title="Unhappy">&nbsp;</div></span> <h3 class='feel-count' data-feel="unhappy"></h3></li>
+						<li data-feelrep="unsure"><span><div class="unsure" title="Unsure">&nbsp;</div></span> <h3 class='feel-count' data-feel="unsure"></h3></li>
+						<li data-feelrep="addicted"><span><div class="addicted" title="Addicted">&nbsp;</div></span> <h3 class='feel-count' data-feel="addicted"></h3></li>
 					</ul>
 					<ul class="statsRight">
-						<li><span><div class="shocked" title="Shocked">&nbsp;</div></span> <h3 data-feel="shocked"></h3></li>
-						<li><span><div class="stressed" title="Stressed">&nbsp;</div></span> <h3 data-feel="stressed"></h3></li>
-						<li><span><div class="bored" title="Bored">&nbsp;</div></span> <h3 data-feel="bored"></h3></li>
+						<li data-feelrep="shocked"><span><div class="shocked" title="Shocked">&nbsp;</div></span> <h3 class='feel-count' data-feel="shocked"></h3></li>
+						<li data-feelrep="stressed"><span><div class="stressed" title="Stressed">&nbsp;</div></span> <h3 class='feel-count' data-feel="stressed"></h3></li>
+						<li data-feelrep="bored"><span><div class="bored" title="Bored">&nbsp;</div></span> <h3 class='feel-count' data-feel="bored"></h3></li>
 					</ul>
 					<ul class="statsRight">
-						<li><span><div class="angry" title="Angry">&nbsp;</div></span> <h3 data-feel="angry"></h3></li>
-						<li><span><div class="frustrated" title="Frustrated">&nbsp;</div></span> <h3 data-feel="frustrated"></h3></li>
-						<li><span><div class="hero" title="I can do it!">&nbsp;</div></span> <h3 data-feel="hero"></h3></li>
+						<li data-feelrep="angry"><span><div class="angry" title="Angry">&nbsp;</div></span> <h3 class='feel-count' data-feel="angry"></h3></li>
+						<li data-feelrep="frustrated"><span><div class="frustrated" title="Frustrated">&nbsp;</div></span> <h3 class='feel-count' data-feel="frustrated"></h3></li>
+						<li data-feelrep="hero"><span><div class="hero" title="I can do it!">&nbsp;</div></span> <h3 class='feel-count' data-feel="hero"></h3></li>
 					</ul>
 				</div>
 				<div id="ticket-box" style="display: none">
@@ -178,7 +210,7 @@
 							<li><div class="smileyContainer"><div data-answer="bored" class="bored">&nbsp;</div></div>Bored</li>
 							<li><div class="smileyContainer"><div data-answer="hero" class="hero">&nbsp;</div></div>I can do it!</li>
 						</ul>
-					</div>
+				</div>
 				<div id="questions" style="visibility: visible">
 					
 				</div>
@@ -198,54 +230,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="modal" data-form='cpr'>
-				<div class="windowBar modal-windowBar">
-					<p>Report CPR</p>
-				</div>
-				<div class="container modalContainer">
-					<div class="modalContent">
-						<div class="button" data-role="answer" data-answer="cummed">I Cummed</div>
-						<div class="button" data-role="answer" data-answer="milked">I Milked</div>
-						<div class="button" data-role="answer" data-answer="ruined">I Ruined</div>
-						<div class="button" data-role="cancel-modal">Cancel</div>
-					</div>
-				</div>
-			</div>
-			<div class="modal" data-form='lock-up'>
-				<div id="steps-bar">
-					<div id="steps-title">
-						LOCK UP INSTRUCTIONS!
-					</div>
-					<div id="steps">
-						<div id="step">
-							<img src="..\img\I1.png">
-							<ol>
-								<li>OPEN lock and turn shackle 90*. Push down and and turn to indicated position.
-							</ol>
-						</div>
-						<div id="step">
-							<img src="..\img\I2.png">
-							<ol start="2">
-								<li>SET a random code WITHOUT looking.
-							</ol>
-						</div>
-						<div id="step">
-							<div id="steps-upload">
-									<div id="steps-drop">
-										Upload
-									</div>
-							</div>
-							<ol start="3">
-								<li>TAKE a photo of the code and DRAG here to upload. DELETE ALL copies of the file.
-							</ol>
-						</div>
-						<div id="step">
-							<img src="..\img\I4.png">
-							<ol start="4">
-								<li>PUT ON chastity device and LOCK UP the keys.
-							</ol>
-						</div>
-					</div>
+			<div class="modal" data-form='lock'>
+				<div class="modalContent">
+					<div class="button" data-role="cancel-modal">Cancel</div>
 				</div>
 			</div>
 		</div>

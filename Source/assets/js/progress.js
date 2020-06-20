@@ -16,24 +16,34 @@ function updateDoughnut() {
 }
 
 function initBoxes() {
-	var $ticket = $('#ticket-box');
+	var $nav = $('#nav-bar');
 	var $feels = $('#feels-box');
+	var $ticket = $('#ticket-box');
+	var $report = $('#report-box');
 	var $feelsQ = $('#feels-q');
 	var $questions = $('#questions');
 	var $ticketPageContainer = $('#ticket-box .ticket-pages');
 	var $ticketPages = $('#ticket-box .ticket-page');
 	var ticketPageIndex = 0;
 
-	switchBox('feels');
+	switchBox('report');
+	sortFeels();
 
-	$('.switch, .switchHl').click(function() {
+
+	$('.switch, .switchHl, switchH2, #moods, #tickets').click(function() {
 		switchBox($(this).data('box'));
 	});
-	$feelsQ.find('.smileyContainer > div').click(function() {
-		stats.addEvent('feeled', Date.now(), $(this).attr('data-answer'));
-		$feelsQ.hide();
-		$questions.css("visibility","visible");
+	$report.find('.reportFeelings-min > li').click(function () {
+		stats.addEvent('feeled', Date.now(), $(this).attr('data-feelrep'));
 	});
+	$feels.find('ul > li').click(function () {
+		stats.addEvent('feeled', Date.now(), $(this).attr('data-feelrep'));
+	});
+    $feelsQ.find('.smileyContainer').click(function() {
+        stats.addEvent('feeled', Date.now(), $(this).children('div').first().attr('data-answer'));
+        $feelsQ.hide();
+        $questions.css("visibility","visible");
+    });
 	$('#ticket-box .arrowRight').click(function() {
 		switchPage(ticketPageIndex + 1);
 	});
@@ -42,11 +52,20 @@ function initBoxes() {
 	});
 	
 	function switchBox(box) {
-		if (box === 'feels') {
-			$ticket.hide();
-			$feels.show();
-		} else {
+		if (box === 'report') {
+			$nav.hide();
 			$feels.hide();
+			$ticket.hide();
+			$report.show();
+		} else if (box === 'feels') {
+			$report.hide();
+			$ticket.hide();
+			$nav.show();
+			$feels.show();
+		} else if (box === 'tickets'){
+			$report.hide();
+			$feels.hide();
+			$nav.show();
 			$ticket.show();
 		}
 		$('.switchHl').addClass('switch').removeClass('switchHl');
@@ -59,15 +78,36 @@ function initBoxes() {
 	}
 }
 
+function sortFeels(){
+	var ul = document.getElementsByClassName('reportFeelings-min')[0];
+	var new_ul = ul.cloneNode(false);
+	// Add all lis to an array
+	var lis = [];
+	for(var i = ul.childNodes.length; i--;){
+		if(ul.childNodes[i].nodeName === 'LI')
+			lis.push(ul.childNodes[i]);
+	}
+
+	// Sort the lis in descending order
+	lis.sort(function(a, b){
+		return parseInt(b.getElementsByClassName('feel-count')[0].innerHTML) -
+			parseInt(a.getElementsByClassName('feel-count')[0].innerHTML);
+	});
+
+	// Add them into the ul in order
+	for(var i = 0; i < lis.length; i++)
+		new_ul.appendChild(lis[i]);
+	ul.parentNode.replaceChild(new_ul, ul);
+	$('ul.reportFeelings-min li').hide();
+	$('ul.reportFeelings-min li:lt(4)').show();
+}
+
 $(document).on('click', '[data-role]', function() {({
-	'report-cpr': function() {
-		showModal('cpr')
-	},
 	'report-edge': function() {
-		showModal('edges');
+		showModal('lock-up');
 	},
 	'lock': function() {
-		showModal('lock-up');
+		showModal('lock');
 	},
 	'add-edges': function() {
 		var amount = +$('#modalBackground > .modal[data-form="edges"] input[data-role="amount"]').val();
@@ -81,7 +121,7 @@ $(document).on('click', '[data-role]', function() {({
 		}
 	},
 	'answer': function() {
-		var form = $(this).closest('.modal[data-form]').data('form');
+		var form = $(this).closest('#buttons1[data-form]').data('form');
 		var $feelsQ = $('#feels-q');
 		var $questions = $('#questions');
 		if (form === 'cpr') {

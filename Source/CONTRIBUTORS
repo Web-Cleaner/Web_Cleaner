@@ -12,11 +12,13 @@ Author: Joseph Gray, with contributions from:
 
 Modifications:
 
-This version contains some modifications from rob204 and Mopar though.
-Actually rob204 did some changes in the image file handling etc while
-Mopar revamped the options page and added the stats/progress page and stuff.
+Contributors: rob204 (Image file handling, Progress Dashboard, Options Page, Schedule)
+			  Mopar (Progress Dashboard UI, Options UI Revamp)
+			  Neppy-Nep (Progress Dashboard UI Revamp, Bug Fixes)
+			  queen (Progress Dashboard UI)
+			  ChasteBeta (Bug Fixes)
 
-Following a (probably incomplete) list of things used for the modifications:
+A (probably incomplete) list of sourced modifications:
  - Nude.js (MIT License) by Patrick Wied https://www.patrick-wied.at/static/nudejs/
  - Progress Bar Liquid Bubble (MIT License) by John Mothershed https://codepen.io/smeeckaert/pen/ojNLYj
  - Silk icons (CC Attribution 2.5 License) by Mark James http://famfamfam.com/lab/icons/silk/

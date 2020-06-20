@@ -1256,10 +1256,10 @@ function analyzeCanvas(canvas, callback)
 	var conjunction;
 
 	if (options.image_two_pass) {
-		strategies = [simple, nudejs];
+		strategies = [nudejs, simple];
 		conjunction = 'or';
 	} else {
-		strategies = [simple];
+		strategies = [nudejs];
 		conjunction = 'or';
 	}
 
@@ -1411,7 +1411,7 @@ function insertTemplates() {
 		return;
 	}
 	var root = document.createElement('div');
-	var shadow = root.createShadowRoot();
+	var shadow = root.attachShadow({mode: 'open'});
 	shadow.innerHTML = templates['pane.html'];
 	pane = {
 		nodes: {root: root},

@@ -322,7 +322,7 @@ var templates = new Object();
 // Function to pass options object to content script.
 chrome.extension.onMessage.addListener(
   function(request, sender, sendResponse) {
-
+	console.log("Request: " + request.greeting);
     if (request.greeting == "request_options")
 	{
 		//window.alert("No need for loading options object."); // Used for testing. Test Case 002. same for line below
